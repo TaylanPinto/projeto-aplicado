@@ -14,6 +14,10 @@ const Login = () => {
     <div className="container">
       <form onSubmit={handleSubmit}>
         <h1>Acesse o sistema</h1>
+        <img
+          src="C:\Users\USUARIO\OneDrive\Desktop\projeto-aplicado\components\assets\LOGO OILMAP.png"
+          alt=""
+        />
         <div>
           <input
             type="email"
