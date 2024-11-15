@@ -13,12 +13,9 @@ const Login = () => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <h1>Acesse o sistema</h1>
-        <img
-          src="C:\Users\USUARIO\OneDrive\Desktop\projeto-aplicado\components\assets\LOGO OILMAP.png"
-          alt=""
-        />
-        <div>
+        <h1>Login</h1>
+
+        <div className="input-field">
           <input
             type="email"
             placeholder="e-mail"
@@ -27,7 +24,7 @@ const Login = () => {
           />
           <FaUser className="icon" />
         </div>
-        <div>
+        <div className="input-field">
           <input
             type="password"
             placeholder="senha"

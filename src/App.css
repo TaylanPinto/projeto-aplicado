@@ -4,7 +4,6 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  text-shadow: #000 1px 1px;
 }
 
 .App {
@@ -15,4 +14,5 @@
   background-image: url("C:\Users\USUARIO\OneDrive\Desktop\projeto-aplicado\components\assets\img-bg.jpg");
   background-size: cover;
   background-position: center;
+  
 }
