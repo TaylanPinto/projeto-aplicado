@@ -2,14 +2,24 @@ import React from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Envio');
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (username === 'taylan@gmail.com' && password === 'password') {
+      alert('Login bem-sucedido!');
+      navigate('/');
+    } else {
+      alert('Credenciais inválidas!');
+    }
   };
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
@@ -41,7 +51,7 @@ const Login = () => {
           <a href="#">Esqueceu a senha?</a>
         </div>
 
-        <button>Entrar</button>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );
