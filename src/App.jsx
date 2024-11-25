@@ -1,14 +1,24 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from 'react-router-dom';
 import PaginaInicial from '../pages/PaginaInicial';
 import GerenciamentoDeUsuario from '../pages/GerenciamentoDeUsuario';
 import Login from '../pages/Login';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const isLogin = location.pathname === '/login';
+
   return (
-    <Router>
-      <Navbar />
+    <>
+      {!isLogin && <Navbar />}
+
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
         <Route
@@ -17,9 +27,17 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
-    </Router>
+
+      {!isLogin && <Footer />}
+    </>
   );
 }
 
+function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
+  );
+}
 export default App;
