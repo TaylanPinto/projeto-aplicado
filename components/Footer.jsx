@@ -1,10 +1,6 @@
 import './Footer.css';
 
 function Footer() {
-  return (
-    <footer>
-      <span className="footer">Projeto Aplicado</span>
-    </footer>
-  );
+  return <footer> Projeto Aplicado</footer>;
 }
 export default Footer;

@@ -1,0 +1,55 @@
+.cardUsuario {
+  width: 80%; /* Define a largura da tabela */
+  max-width: 100%; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza a tabela horizontalmente */
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: left;
+  margin-left: 190px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cardUsuario th,
+.cardUsuario td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+.cardUsuario th {
+  background-color: #f0f0f0;
+  color: black;
+  text-align: left;
+}
+
+.cardUsuario input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.cardUsuario th:first-child,
+.cardUsuario td:first-child {
+  text-align: center; /* Centraliza a primeira coluna (checkbox) */
+  width: 50px; /* Define uma largura fixa para a coluna do checkbox */
+}
+
+.BarraLateral {
+  position: fixed; /* Mantém a barra lateral fixa na posição */
+  left: 0;
+  top: 65px;
+  height: 100%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 11px;
+}
+
+.BarraLateral button {
+    background-color: #F1E6CF;
+    border-radius: 2px;
+    margin: 10px;
+    padding: 15px;
+}
+
+.botoesBarraLat {
+    display:flex; 
+    flex-direction: column;
+    
+}
