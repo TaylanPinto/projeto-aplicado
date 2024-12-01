@@ -1,11 +1,11 @@
 .cardUsuario {
-  width: 100%; /* Define a largura da tabela */
+  width: 80%; /* Define a largura da tabela */
   max-width: 100%; /* Limita a largura máxima */
   margin: 0 auto; /* Centraliza a tabela horizontalmente */
   border-collapse: collapse;
   font-size: 1rem;
   text-align: left;
-  margin-left: 210px;
+  margin-left: 190px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -35,10 +35,21 @@
 .BarraLateral {
   position: fixed; /* Mantém a barra lateral fixa na posição */
   left: 0;
-  top: 0;
+  top: 65px;
   height: 100%;
-  background-color: #f2ead8; /* Cor de fundo opcional */
-  padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(33, 7, 130);
+  padding: 11px;
+}
+
+.BarraLateral button {
+    background-color: #F1E6CF;
+    border-radius: 2px;
+    margin: 10px;
+    padding: 15px;
+}
+
+.botoesBarraLat {
+    display:flex; 
+    flex-direction: column;
+    
 }
