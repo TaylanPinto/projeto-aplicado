@@ -9,7 +9,6 @@ import PaginaInicial from '../pages/PaginaInicial';
 import GerenciamentoDeUsuario from '../pages/GerenciamentoDeUsuario';
 import Navbar from '../components/navbar';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 
 function Layout() {
   const location = useLocation();
@@ -18,7 +17,6 @@ function Layout() {
   return (
     <>
       {!isLogin && <Navbar />}
-      {!isLogin && <Header />}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<PaginaInicial />} />
