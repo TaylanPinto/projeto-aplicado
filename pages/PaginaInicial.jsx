@@ -1,11 +1,9 @@
-import Map from "../components/Map";
+import Map from '../components/Map';
 
 function PaginaInicial() {
   return (
     <div>
-      <h1> Pagina Inicial</h1>
-      <p>Conteúdo da página</p>
-      <Map/>
+      <Map />
     </div>
   );
 }
