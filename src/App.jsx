@@ -9,6 +9,8 @@ import GerenciamentoDeUsuario from '../pages/GerenciamentoDeUsuario';
 import Login from '../pages/Login';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import CadastroUsuario from '../pages/CadastroUsuario'
+import '../pages/GerenciamentoDeUsuario.css';
 
 function Layout() {
   const location = useLocation();
@@ -25,6 +27,7 @@ function Layout() {
           element={<GerenciamentoDeUsuario />}
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/CadastroUsuario" element={<CadastroUsuario />} />
       </Routes>
 
       {!isLogin && <Footer />}
