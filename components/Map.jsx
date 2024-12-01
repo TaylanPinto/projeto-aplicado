@@ -1,6 +1,7 @@
 import React from "react";
 import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, FeatureGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import Header from "../components/Header"
 
 const WmsLayer = ({ url, layerName }) => {
   const map = useMap();
@@ -27,6 +28,8 @@ const WmsLayer = ({ url, layerName }) => {
 
 const MapWithWmsLayer = () => {
   return (
+    <>
+    <Header/>
     <MapContainer
       center={[-14.441994,-50.596624]} // Coordenadas iniciais
       zoom={4.5}
@@ -58,6 +61,7 @@ const MapWithWmsLayer = () => {
         </LayerGroup>
         </LayersControl.Overlay>
     </LayersControl>
+  
 
 
       {/* Camadas WMS */}
@@ -72,6 +76,7 @@ const MapWithWmsLayer = () => {
       />
 
     </MapContainer>
+    </>
   );
 };
 
