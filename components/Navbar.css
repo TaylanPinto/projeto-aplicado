@@ -17,6 +17,9 @@
   height: 28px;
   object-fit: contain;
   justify-content: flex-end;
+  position: fixed;
+  right: 80px;
+  top: 25px;
 }
 
 .sair {
@@ -29,9 +32,11 @@
   text-align: center;
   align-items: center;
   display: flex;
+  
 }
 
 .icon {
+
   font-size: 20px;
   color: #82785A;
   margin: 0;
