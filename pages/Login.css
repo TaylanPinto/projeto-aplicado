@@ -1,22 +1,28 @@
 .fundo {
-  background: url('/pages/assets/img-bg.jpg') no-repeat;
+  background: url('/pages/assets/img-bg.jpg') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-}
-.container {
+  width: 100%;
+  height: 100vh; /* ficar com 100% da tela */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  width: 400px; 
-  margin: 0 auto;
- 
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%; 
+  max-width: 400px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9); 
+  backdrop-filter: blur(10px); 
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+}
+
 .container .input-field {
   position: relative;
   width: 100%;
@@ -25,15 +31,16 @@
   }
   
   .input-field input {
-    width: 75%;
-    height: 30%;
-    background-color: transparent;
-    outline: none;
+    width: 100%;
+    height: 50px;
+    padding: 10px 20px;
+    padding-right: 50px; /* Espaço para o ícone */
     border: 2px solid #49D08D;
-    border-radius: 40px;
-    font-size: 20px;
-    color: #000;
-    padding: 20px 45px;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #333;
+    background: transparent;
+    outline: none;
   }
   
 .container img {
@@ -53,8 +60,8 @@
 .input-field .icon {
   position: absolute;
   right: 20px;
-  top: 50%;
-  transform: translateY(30%);
+  top: 85%;
+  transform: translateY(-50%);
   font-size: 18px;
   color: #49D08D;
 }
@@ -78,16 +85,36 @@
 }
 
 .container button {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  width: 60%;
+  width: 100%;
   height: 50px;
   background-color: #49D08D;
   border: none;
-  outline: none;
   color: #fff;
-  font-size: 20px;
-  border-radius: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 25px;
   cursor: pointer;
-  font-weight: 600;
-  text-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #3ca773;
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .input-field input {
+    font-size: 14px;
+  }
+
+  .container button {
+    font-size: 16px;
+    height: 45px;
+  }
 }
