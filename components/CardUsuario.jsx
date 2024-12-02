@@ -6,7 +6,7 @@ export default function CardUsuario({ usuarios, onCheckboxChange }) {
       <thead>
         <tr>
           <th>
-            <input type="checkbox" disabled /> {/* Apenas para título */}
+            <input type="checkbox" disabled /> {}
           </th>
           <th>USUÁRIO</th>
           <th>E-MAIL</th>
