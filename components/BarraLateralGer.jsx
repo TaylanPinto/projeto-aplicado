@@ -1,18 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./BarraLateralGer.css";
 
-export default function BarraLateralGer() {
+export default function BarraLateralGer({ setTermoBusca }) {
   return (
-    <div>
-      <input type="text" />
-      <div/>
+    <div className="barra-lateral">
+      {/* Campo de busca */}
+      <div className="campo-busca">
+        <input
+          type="text"
+          placeholder="Buscar usuário..."
+          onChange={(e) => setTermoBusca(e.target.value)} // Atualiza o estado do termo de busca
+        />
+      </div>
+
+      {/* Botões */}
       <div className="botoesBarraLat">
-        <button>
-          <Link to="/CadastroUsuario">Cadastrar</Link>
-        </button>
-        <button>
-          <Link to="/CadastroUsuario">Editar</Link>
-        </button>
+        <Link to="/CadastroUsuario">
+          <button>Cadastrar</button>
+        </Link>
+        <Link to="/CadastroUsuario">
+          <button>Editar</button>
+        </Link>
         <button>Remover</button>
       </div>
     </div>

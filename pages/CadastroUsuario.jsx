@@ -4,7 +4,7 @@ import Formulario from '../components/Formulario'
 export default function CadastroUsuario() {
 
   return (
-    <div>CadastroUsuario
+    <div>
     <Formulario/>
     </div>
   )

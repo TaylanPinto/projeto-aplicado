@@ -1,44 +1,50 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
-  padding: 1em;
-  background-color: #F1E6CF;
-  height: 25px;
+  justify-content: space-between; /* Garante que os itens estejam separados */
+  align-items: center; /* Centraliza verticalmente os itens */
+  padding: 0 20px; /* Espaçamento interno */
+  background-color: #f1e6cf;
+  height: 60px; /* Altura fixa para a navbar */
+  position: relative; /* Fixa a navbar no topo da tela */
+  top: 0; /* Garante que esteja alinhada ao topo */
+  left: 0; /* Estende a largura para o início */
+  right: 0; /* Estende a largura para o fim */
+  z-index: 200; /* Garante que a navbar esteja acima de outros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
 }
 
 .logo-oilmap {
-  width: 100px;
-  height: 30px;
-  object-fit: contain;
+  width: 100px; /* Tamanho responsivo */
+  height: auto;
+  object-fit: contain; /* Mantém proporção */
+  z-index: 300; /* Garante prioridade sobre outros elementos */
 }
 
 .logo-anp {
-  width: 100px;
-  height: 28px;
-  object-fit: contain;
-  justify-content: flex-end;
-  position: fixed;
-  right: 80px;
-  top: 25px;
+  width: 90px; /* Tamanho responsivo */
+  height: auto;
+  object-fit: contain; /* Mantém proporção */
+  position: absolute; /* Posiciona dentro da navbar */
+  right: 80px; /* Ajusta a posição à direita */
+  top: 22%; /* Centraliza verticalmente */
+  z-index: 300; /* Garante prioridade sobre outros elementos */
 }
 
 .sair {
   background-color: #fff;
-  font-size: 20px;
-  border: 1px solid #fff;
-  padding: 15px;
-  border-radius: 10px;
-  line-height: 5px;
-  text-align: center;
-  align-items: center;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 8px;
   display: flex;
-  
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
-
   font-size: 20px;
-  color: #82785A;
+  color: #82785a;
   margin: 0;
   padding: 0;
 }

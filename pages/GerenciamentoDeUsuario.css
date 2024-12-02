@@ -1,11 +1,60 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  
+}
+
+.content {
+  flex: 1;  
+  display: flex;  
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.BarraLateral {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  height: calc(100% - 65px);  
+  width: 200px;  
+  background-color: #F1E6CF; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);  
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.BarraLateral button {
+  background-color: #6c6c48;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.BarraLateral button:hover {
+  background-color: #555533;
+}
+
+ 
 .cardUsuario {
-  width: 80%; /* Define a largura da tabela */
-  max-width: 100%; /* Limita a largura máxima */
-  margin: 0 auto; /* Centraliza a tabela horizontalmente */
+  margin: 0 auto;
+  margin-left: 300px;  
+  width: 100%;
   border-collapse: collapse;
-  font-size: 1rem;
+  font-size: 20px;
   text-align: left;
-  margin-left: 190px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -16,40 +65,32 @@
 }
 
 .cardUsuario th {
-  background-color: #f0f0f0;
+  background-color: #f4f4f4;
   color: black;
-  text-align: left;
 }
 
-.cardUsuario input[type="checkbox"] {
-  margin: 0;
-  cursor: pointer;
+.cardUsuario tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Linhas alternadas */
 }
 
-.cardUsuario th:first-child,
-.cardUsuario td:first-child {
-  text-align: center; /* Centraliza a primeira coluna (checkbox) */
-  width: 50px; /* Define uma largura fixa para a coluna do checkbox */
+.no-users-box {
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  height: 200px; 
+  width: 30%; 
+  background-color: #f8f9fa; 
+  border: 4px solid #ddd;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #555; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  z-index: 1000;
 }
 
-.BarraLateral {
-  position: fixed; /* Mantém a barra lateral fixa na posição */
-  left: 0;
-  top: 65px;
-  height: 100%;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  padding: 11px;
-}
-
-.BarraLateral button {
-    background-color: #F1E6CF;
-    border-radius: 2px;
-    margin: 10px;
-    padding: 15px;
-}
-
-.botoesBarraLat {
-    display:flex; 
-    flex-direction: column;
-    
-}

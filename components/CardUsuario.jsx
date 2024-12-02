@@ -1,28 +1,33 @@
-const CardUsuario = (props) => {
+import React from "react";
+
+export default function CardUsuario({ usuarios, onCheckboxChange }) {
   return (
     <table className="cardUsuario">
-    <thead>
-      <tr>
-        <th></th>
-        <th>USUÁRIO</th>
-        <th>E-MAIL</th>
-        <th>PROFISSÃO</th>
-      </tr>
-    </thead>
-    <tbody>
-      {props.itens.map((item, index) => (
-        <tr key={index}>
-          <td>
-            <input type="checkbox" />
-          </td>
-          <td>{item.nome}</td>
-          <td>{item.email}</td>
-          <td>{item.profissao}</td>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" disabled /> {/* Apenas para título */}
+          </th>
+          <th>USUÁRIO</th>
+          <th>E-MAIL</th>
+          <th>PROFISSÃO</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {usuarios.map((usuario, index) => (
+          <tr key={index}>
+            <td>
+              <input
+                type="checkbox"
+                onChange={(e) => onCheckboxChange(e, usuario)}
+              />
+            </td>
+            <td>{usuario.nome}</td>
+            <td>{usuario.email}</td>
+            <td>{usuario.profissao}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
-};
-
-export default CardUsuario;
+}
