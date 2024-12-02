@@ -1,33 +1,33 @@
 .navbar {
   display: flex;
-  justify-content: space-between; /* Garante que os itens estejam separados */
-  align-items: center; /* Centraliza verticalmente os itens */
-  padding: 0 20px; /* Espaçamento interno */
+  justify-content: space-between;  
+  align-items: center;  
+  padding: 0 20px;  
   background-color: #f1e6cf;
-  height: 60px; /* Altura fixa para a navbar */
-  position: relative; /* Fixa a navbar no topo da tela */
-  top: 0; /* Garante que esteja alinhada ao topo */
-  left: 0; /* Estende a largura para o início */
-  right: 0; /* Estende a largura para o fim */
-  z-index: 200; /* Garante que a navbar esteja acima de outros elementos */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+  height: 60px;  
+  position: relative;  
+  top: 0;  
+  left: 0; 
+  right: 0;  
+  z-index: 200;  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .logo-oilmap {
-  width: 100px; /* Tamanho responsivo */
+  width: 100px; 
   height: auto;
-  object-fit: contain; /* Mantém proporção */
-  z-index: 300; /* Garante prioridade sobre outros elementos */
+  object-fit: contain;  
+  z-index: 300;  
 }
 
 .logo-anp {
-  width: 90px; /* Tamanho responsivo */
+  width: 90px;  
   height: auto;
-  object-fit: contain; /* Mantém proporção */
-  position: absolute; /* Posiciona dentro da navbar */
-  right: 80px; /* Ajusta a posição à direita */
-  top: 22%; /* Centraliza verticalmente */
-  z-index: 300; /* Garante prioridade sobre outros elementos */
+  object-fit: contain;  
+  position: absolute; 
+  right: 80px; 
+  top: 22%; 
+  z-index: 300; 
 }
 
 .sair {

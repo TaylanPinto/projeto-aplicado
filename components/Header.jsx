@@ -18,9 +18,6 @@ function Header() {
         <span className="icon2">
           <FaMap />
         </span>
-        <span className="icon3">
-          <FaLayerGroup />
-        </span>
       </div>
     </div>
   );
