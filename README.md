@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 
 - Para importaçao de Icones: npm i @react-icons/all-files react-icons
 - Para importaçao do Mapa: npm install
+- Para importaçao do papaparse: npm install papaparse
