@@ -4,20 +4,20 @@ import { FaChevronDown } from 'react-icons/fa6';
 import './DropDown.css';
 
 export default function DropDown() {
-  const [options, setOptions] = useState([]); 
-  const [selected, setSelected] = useState('Selecione'); 
-  const [isOpen, setIsOpen] = useState(false); 
+  const [options, setOptions] = useState([]);
+  const [selected, setSelected] = useState('Selecione');
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchCSV = async () => {
       try {
-        const response = await fetch('/Tabela_pocos_2024_Dezembro_01.csv'); 
+        const response = await fetch('/Tabela_pocos_2024_Dezembro_01.csv');
         const reader = await response.text();
         Papa.parse(reader, {
-          header: true, 
-          delimiter: ";",
+          header: true,
+          delimiter: ';',
           complete: (results) => {
-            setOptions(results.data); 
+            setOptions(results.data);
           },
         });
       } catch (error) {
@@ -29,18 +29,18 @@ export default function DropDown() {
   }, []);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen); 
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className="menu">
       <button onClick={toggleDropdown} className="menu-button">
-        <span>{selected}</span>
+        <span className="select">{selected}</span>
         <span className="icon">
           <FaChevronDown />
         </span>
       </button>
-      {isOpen && ( 
+      {isOpen && (
         <div
           className="dropdown-content"
           style={{
@@ -55,8 +55,8 @@ export default function DropDown() {
               key={index}
               className="dropdown-item"
               onClick={() => {
-                setSelected(option.POCO);  
-                setIsOpen(false);  
+                setSelected(option.POCO);
+                setIsOpen(false);
               }}
             >
               {option.POCO} {}

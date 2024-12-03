@@ -1,21 +1,27 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./BarraLateralGer.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './BarraLateralGer.css';
+import { RiUserSearchFill } from 'react-icons/ri';
 
-export default function BarraLateralGer({ usuarios, selecionados, setTermoBusca, setUsuarios }) {
+export default function BarraLateralGer({
+  usuarios,
+  selecionados,
+  setTermoBusca,
+  setUsuarios,
+}) {
   const navigate = useNavigate();
 
   const handleRemover = () => {
     if (selecionados.length === 0) {
-      alert("Por favor, selecione pelo menos um usuário para remover.");
+      alert('Por favor, selecione pelo menos um usuário para remover.');
       return;
     }
 
     const novosUsuarios = usuarios.filter(
-      (usuario) => !selecionados.includes(usuario.nome)
+      (usuario) => !selecionados.includes(usuario.nome),
     );
 
-    localStorage.setItem("dadosUsuario", JSON.stringify(novosUsuarios));
+    localStorage.setItem('dadosUsuario', JSON.stringify(novosUsuarios));
 
     setUsuarios(novosUsuarios);
   };
@@ -23,6 +29,9 @@ export default function BarraLateralGer({ usuarios, selecionados, setTermoBusca,
   return (
     <div className="barra-lateral">
       <div className="campo-busca">
+        <div className="outra">
+          <RiUserSearchFill className="busca" />
+        </div>
         <input
           type="text"
           placeholder="Buscar usuário..."
@@ -30,8 +39,8 @@ export default function BarraLateralGer({ usuarios, selecionados, setTermoBusca,
         />
       </div>
       <div className="botoesBarraLat">
-        <button onClick={() => navigate("/CadastroUsuario")}>Cadastrar</button>
-        <button onClick={() => navigate("/CadastroUsuario")}>Editar</button>
+        <button onClick={() => navigate('/CadastroUsuario')}>Cadastrar</button>
+        <button onClick={() => navigate('/CadastroUsuario')}>Editar</button>
         <button onClick={handleRemover}>Remover</button>
       </div>
     </div>
