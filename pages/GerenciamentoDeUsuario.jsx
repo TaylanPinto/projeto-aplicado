@@ -24,9 +24,9 @@ export default function GerenciamentoDeUsuario() {
 
   const handleCheckboxChange = (e, usuario) => {
     if (e.target.checked) {
-      setSelecionados((prev) => [...prev, usuario.nome]);
+      setSelecionados((prev) => [...prev, usuario.id]);
     } else {
-      setSelecionados((prev) => prev.filter((nome) => nome !== usuario.nome));
+      setSelecionados((prev) => prev.filter((id) => id !== usuario.id));
     }
   };
 

@@ -17,7 +17,7 @@ export default function CardUsuario({ usuarios, onCheckboxChange }) {
         </thead>
         <tbody>
           {usuarios.map((usuario, index) => (
-            <tr key={index}>
+            <tr key={usuario.id}>
               <td>
                 <input
                   type="checkbox"

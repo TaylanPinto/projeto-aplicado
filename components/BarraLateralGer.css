@@ -41,16 +41,7 @@
     transition: background-color 0.3s;
     margin-bottom: 10px; 
   }
-  
-  .botoesBarraLat button:hover {
-    background-color: #eded1b;
-  }
-  
-  .botoesBarraLat a {
-    text-decoration: none; 
-    color: inherit; 
-    display: block; 
-  }
+
   
 
   
