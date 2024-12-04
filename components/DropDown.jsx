@@ -1,69 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
-import { FaChevronDown } from 'react-icons/fa6';
 import './DropDown.css';
 
 export default function DropDown() {
   const [options, setOptions] = useState([]);
-  const [selected, setSelected] = useState('Selecione');
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedPoco, setSelectedPoco] = useState(null);
 
   useEffect(() => {
     const fetchCSV = async () => {
-      try {
-        const response = await fetch('/Tabela_pocos_2024_Dezembro_01.csv');
-        const reader = await response.text();
-        Papa.parse(reader, {
-          header: true,
-          delimiter: ';',
-          complete: (results) => {
-            setOptions(results.data);
-          },
-        });
-      } catch (error) {
-        console.error('Erro ao carregar o CSV:', error);
-      }
+      const response = await fetch('/Tabela_pocos_2024_Dezembro_01.csv');
+      const reader = await response.text();
+      Papa.parse(reader, {
+        header: true,
+        complete: (results) => {
+          setOptions(results.data);
+        },
+      });
     };
-
     fetchCSV();
   }, []);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const handleSelect = (e) => {
+    const selected = options.find((option) => option.POCO === e.target.value);
+    setSelectedPoco(selected);
   };
 
   return (
-    <div className="menu">
-      <button onClick={toggleDropdown} className="menu-button">
-        <span className="select">{selected}</span>
-        <span className="icon">
-          <FaChevronDown />
-        </span>
-      </button>
-      {isOpen && (
-        <div
-          className="dropdown-content"
-          style={{
-            position: 'absolute',
-            zIndex: 1000,
-            backgroundColor: 'white',
-            border: '1px solid #ccc',
-          }}
-        >
-          {options.map((option, index) => (
-            <div
-              key={index}
-              className="dropdown-item"
-              onClick={() => {
-                setSelected(option.POCO);
-                setIsOpen(false);
-              }}
-            >
-              {option.POCO} {}
-            </div>
-          ))}
-        </div>
-      )}
+    <div className="dropdown-container">
+      <select onChange={handleSelect} defaultValue="">
+        <option value="" disabled>Selecione</option>
+        {options.map((option, index) => (
+          <option key={index} value={option.POCO}>
+            {option.POCO}
+          </option>
+        ))}
+      </select>
+      {selectedPoco && <DetalhesPoco poco={selectedPoco} />}
+    </div>
+  );
+}
+
+function DetalhesPoco({ poco }) {
+  return (
+    <div className="detalhes-container">
+      <h3>{poco.POCO}</h3>
+      <p><strong>Operador:</strong> {poco.OPERADOR}</p>
+      <p><strong>Estado:</strong> {poco.ESTADO}</p>
+      <p><strong>Bacia:</strong> {poco.BACIA}</p>
+      <p><strong>Categoria:</strong> {poco.CATEGORIA}</p>
+      <p><strong>Data de Conclusão:</strong> {poco.CONCLUSAO}</p>
+      {/* Adicione mais informações conforme necessário */}
     </div>
   );
 }
