@@ -8,6 +8,7 @@ export default function BarraLateralGer({
   selecionados,
   setTermoBusca,
   setUsuarios,
+  setSelecionados,  
 }) {
   const navigate = useNavigate();
 
@@ -26,12 +27,13 @@ export default function BarraLateralGer({
 
   const handleRemover = () => {
     const novosUsuarios = usuarios.filter(
-      (usuario) => !selecionados.includes(usuario.nome)
+      (usuario) => !selecionados.includes(usuario.id) 
     );
 
     localStorage.setItem('dadosUsuario', JSON.stringify(novosUsuarios));
 
     setUsuarios(novosUsuarios);
+    setSelecionados([]);  
   };
 
   return (

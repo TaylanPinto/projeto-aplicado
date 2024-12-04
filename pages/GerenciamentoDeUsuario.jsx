@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import BarraLateralGer from '../components/BarraLateralGer';
-import CardUsuario from '../components/CardUsuario';
-import { RiUserSearchFill } from 'react-icons/ri';
+import React, { useEffect, useState } from "react";
+import BarraLateralGer from "../components/BarraLateralGer";
+import CardUsuario from "../components/CardUsuario";
+import { RiUserSearchFill } from "react-icons/ri";
 
 export default function GerenciamentoDeUsuario() {
   const [usuarios, setUsuarios] = useState([]);
-  const [selecionados, setSelecionados] = useState([]); // Usuários selecionados
-  const [termoBusca, setTermoBusca] = useState(''); // Termo de busca
-  const [usuariosFiltrados, setUsuariosFiltrados] = useState([]); // Usuários filtrados
-
+  const [selecionados, setSelecionados] = useState([]); 
+  const [termoBusca, setTermoBusca] = useState("");  
+  const [usuariosFiltrados, setUsuariosFiltrados] = useState([]); 
   useEffect(() => {
-    const dados = JSON.parse(localStorage.getItem('dadosUsuario')) || [];
+    const dados = JSON.parse(localStorage.getItem("dadosUsuario")) || [];
     setUsuarios(dados);
     setUsuariosFiltrados(dados);
   }, []);
 
   useEffect(() => {
     const filtrados = usuarios.filter((usuario) =>
-      usuario.nome.toLowerCase().includes(termoBusca.toLowerCase()),
+      usuario.nome.toLowerCase().includes(termoBusca.toLowerCase())
     );
     setUsuariosFiltrados(filtrados);
   }, [termoBusca, usuarios]);
@@ -39,6 +38,7 @@ export default function GerenciamentoDeUsuario() {
             selecionados={selecionados}
             setTermoBusca={setTermoBusca}
             setUsuarios={setUsuarios}
+            setSelecionados={setSelecionados} 
           />
         </div>
         <div className="cardsUsuarios">
