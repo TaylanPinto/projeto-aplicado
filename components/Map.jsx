@@ -34,7 +34,9 @@ const MapWithWmsLayer = () => {
       center={[-14.441994,-50.596624]} // Coordenadas iniciais
       zoom={4.5}
       scrollWheelZoom={true}
-      style={{ height: "100vh", width: "100%" }}
+      style={{
+        height: "100vh",width: "100%" 
+        }}
     >
       
       <LayersControl position="topright">
@@ -79,5 +81,6 @@ const MapWithWmsLayer = () => {
     </>
   );
 };
+
 
 export default MapWithWmsLayer;

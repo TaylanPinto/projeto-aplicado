@@ -1,15 +1,38 @@
-footer {
-  justify-content: space-between;
-  padding: 8px;
-  background-color: #614305;
-  height: 10px;
-  color: aliceblue;
-  opacity: 0.6;
-  align-items: center;
-  font-weight: bold;
-  grid-row: 2;
-  flex: 0 0 auto;
+.footer {
+  background-color: #82785A;
+  color: white;
+  padding: 3px;
   text-align: center;
-  flex-direction: column;
-  display: flex;
+  font-size: 14px;
+  border-top:1px solid #ccc;
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-projeto {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.footer-contato {
+  line-height: 0.6;
+}
+
+.footer-link {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 12px;
+  }
+
+  .footer-container {
+    padding: 0 10px;
+  }
 }

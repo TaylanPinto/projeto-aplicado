@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CadastroUsuario from '../pages/CadastroUsuario'
 import '../pages/GerenciamentoDeUsuario.css';
+import '../src/App.css';
 
 function Layout() {
   const location = useLocation();

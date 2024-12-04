@@ -1,0 +1,56 @@
+.barra-lateral {
+    position: fixed; 
+    top: 65px; 
+    left: 0; 
+    height: calc(100% - 65px); 
+    width: 200px; 
+    padding: 15px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    z-index: 100;
+  }
+  
+  .busca {
+    top: 85%;
+    transform: translateX(135px);
+    font-size: 18px;
+    color: #49D08D;
+  }
+
+  .outra {
+    transform: translateY(160%);
+  }
+
+  .campo-busca input {
+    
+    width: 100%; 
+    padding: 12px;
+    border: 3px solid #49D08D;
+    border-radius: 28px;
+    font-size: 14px;
+  }
+  
+  .botoesBarraLat button {
+    width: 100%; 
+    color: white; 
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; 
+  }
+  
+  .botoesBarraLat button:hover {
+    background-color: #eded1b;
+  }
+  
+  .botoesBarraLat a {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+  }
+  
+
+  

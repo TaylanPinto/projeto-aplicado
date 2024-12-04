@@ -1,9 +1,28 @@
 .header {
-  background-color: #614305;
-  opacity: 0.6;
   display: flex;
-  padding: 15px;
-  justify-content: left;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #82785A;
+  position: relative; 
+  z-index: 10; 
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto; 
+  width: 200px; 
 }
 
 .itens{
@@ -11,7 +30,7 @@
   margin: 0 10px;
 }
 
-.itens .icon {
+.itens .icon, .itens .icon2 {
     background-color: #fff;
     color: #82785A;
     font-size: 25px;
@@ -19,36 +38,9 @@
     padding: 10px;
     border-radius: 10px;
     line-height: 5px;
-    text-align: center;
-    align-items: center;
     display: inline-block;
     margin: 0 5px;
 }
 
-.itens .icon2 {
-  background-color: #fff;
-  color: #82785A;
-  font-size: 25px;
-  border: 1px solid #fff;
-  padding: 10px;
-  border-radius: 10px;
-  line-height: 5px;
-  text-align: center;
-  align-items: center;
-  display: inline-block;
-  margin: 0 5px;
-}
 
-.itens .icon3 {
-  background-color: #fff;
-  color: #82785A;
-  font-size: 25px;
-  border: 1px solid #fff;
-  padding: 10px;
-  border-radius: 10px;
-  line-height: 5px;
-  text-align: center;
-  align-items: center;
-  display: inline-block;
-  margin: 0 5px;
-}
+

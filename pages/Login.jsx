@@ -17,7 +17,7 @@ const Login = () => {
       alert('Login bem-sucedido!');
       navigate('/');
     } else {
-      alert('Senha ou login incorreto!');
+      alert('Email ou Senha incorretos!');
     }
   };
 
