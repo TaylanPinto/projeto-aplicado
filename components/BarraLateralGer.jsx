@@ -11,6 +11,17 @@ export default function BarraLateralGer({
 }) {
   const navigate = useNavigate();
 
+  const handleEditar = () => {
+    if (selecionados.length === 1) {
+      let usuario = usuarios.filter((usuario) =>
+        selecionados.includes(usuario.nome),
+      );
+
+      navigate('/CadastroUsuario', { state: { usuario: usuario[0] } });
+      return;
+    }
+  };
+
   const handleRemover = () => {
     if (selecionados.length === 0) {
       alert('Por favor, selecione pelo menos um usuário para remover.');

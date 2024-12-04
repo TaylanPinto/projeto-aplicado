@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Importa o hook para redirecionamento
 import "./Formulario.css";
 
-const Formulario = () => {
+const Formulario = ({usuario, onSubmit}) => {
   const [novoUsuario, setNovoUsuario] = useState({
     nome: "",
     email: "",
@@ -19,30 +19,47 @@ const Formulario = () => {
     complemento: "",
     cep: "",
   });
+  const [edicao, setEdicao] = useState(false)
 
-  const navigate = useNavigate(); // Hook para redirecionar o usuário
+  useEffect(() => {
+    if (usuario) {
+      setEdicao(true)
+      setNovoUsuario((prev) => ({
+        ...prev,
+        ...usuario,
+      }));
+    }
+  }, [usuario]);
+
+  const navigate = useNavigate(); 
 
   const handleChange = (field, value) => {
     setNovoUsuario((prev) => ({ ...prev, [field]: value }));
   };
 
-  const salvarNoLocalStorage = (chave, novoUsuario) => {
+  const salvarNoLocalStorage = (chave, novoUsuario, edicao) => {
     let dadosExistentes = localStorage.getItem(chave);
+    
     if (dadosExistentes) {
       dadosExistentes = JSON.parse(dadosExistentes);
-      if (!Array.isArray(dadosExistentes)) {
-        dadosExistentes = [dadosExistentes];
+  
+      if (edicao) {
+        dadosExistentes = dadosExistentes.map((usuario) => 
+          usuario.id === novoUsuario.id ? novoUsuario : usuario
+        );
+      } else {
+        dadosExistentes.push(novoUsuario);
       }
-      dadosExistentes.push(novoUsuario);
     } else {
       dadosExistentes = [novoUsuario];
     }
+  
     localStorage.setItem(chave, JSON.stringify(dadosExistentes));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    salvarNoLocalStorage("dadosUsuario", novoUsuario);
+    salvarNoLocalStorage("dadosUsuario", novoUsuario, edicao);
     navigate("/gerenciamentoDeUsuario"); // Redireciona para Gerenciamento de Usuários
   };
 
@@ -92,6 +109,7 @@ const Formulario = () => {
             type="text"
             value={novoUsuario.cpf}
             onChange={(e) => handleChange("cpf", e.target.value)}
+            readOnly={edicao}
           />
         </div>
         <div className="form-group">
