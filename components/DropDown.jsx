@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Papa from 'papaparse';
-import './DropDown.css';
+import React, { useState, useEffect } from "react";
+import Papa from "papaparse";
+import "./DropDown.css";
 
 export default function DropDown() {
   const [options, setOptions] = useState([]);
@@ -8,7 +8,7 @@ export default function DropDown() {
 
   useEffect(() => {
     const fetchCSV = async () => {
-      const response = await fetch('/Tabela_pocos_2024_Dezembro_01.csv');
+      const response = await fetch("/Tabela_pocos_2024_Dezembro_01.csv");
       const reader = await response.text();
       Papa.parse(reader, {
         header: true,
@@ -26,9 +26,11 @@ export default function DropDown() {
   };
 
   return (
-    <div className="dropdown-container">
+    <div className="dropdown">
       <select onChange={handleSelect} defaultValue="">
-        <option value="" disabled>Selecione</option>
+        <option value="" disabled>
+          Selecione
+        </option>
         {options.map((option, index) => (
           <option key={index} value={option.POCO}>
             {option.POCO}
@@ -44,12 +46,21 @@ function DetalhesPoco({ poco }) {
   return (
     <div className="detalhes-container">
       <h3>{poco.POCO}</h3>
-      <p><strong>Operador:</strong> {poco.OPERADOR}</p>
-      <p><strong>Estado:</strong> {poco.ESTADO}</p>
-      <p><strong>Bacia:</strong> {poco.BACIA}</p>
-      <p><strong>Categoria:</strong> {poco.CATEGORIA}</p>
-      <p><strong>Data de Conclusão:</strong> {poco.CONCLUSAO}</p>
-      {/* Adicione mais informações conforme necessário */}
+      <p>
+        <strong>Estado:</strong> {poco.ESTADO}
+      </p>
+      <p>
+        <strong>Bacia:</strong> {poco.BACIA}
+      </p>
+      <p>
+        <strong>Categoria:</strong> {poco.CATEGORIA}
+      </p>
+      <p>
+        <strong>Data de Conclusão:</strong> {poco.CONCLUSAO}
+      </p>
+      <p>
+        <strong>Situação:</strong> {poco.SITUACAO}
+      </p>
     </div>
   );
 }
