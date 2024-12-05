@@ -1,8 +1,9 @@
 import React from "react";
-import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, FeatureGroup } from "react-leaflet";
+import { MapContainer, TileLayer, useMap, LayersControl, LayerGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import Header from "../components/Header"
+import Header from "../components/Header";
 
+// Componente para adicionar a camada WMS
 const WmsLayer = ({ url, layerName }) => {
   const map = useMap();
 
@@ -29,58 +30,59 @@ const WmsLayer = ({ url, layerName }) => {
 const MapWithWmsLayer = () => {
   return (
     <>
-    <Header/>
-    <MapContainer
-      center={[-14.441994,-50.596624]} // Coordenadas iniciais
-      zoom={4.5}
-      scrollWheelZoom={true}
-      style={{
-        height: "100vh",width: "100%" 
+      <Header />
+
+      <MapContainer
+        center={[-14.441994, -50.596624]} // Coordenadas iniciais
+        zoom={4.5}
+        scrollWheelZoom={true}
+        style={{
+          height: "100vh",
+          width: "100%",
         }}
-    >
-      
-      <LayersControl position="topright">
-      <LayersControl.Overlay name="Marker">
-      </LayersControl.Overlay>
-
-      <LayersControl.Overlay checked name="OpenStreetMap">
-        <LayerGroup>
-            {/* Camada base OSL */}
+      >
+        <LayersControl position="topright">
+          {/* Camada base: OpenStreetMap */}
+          <LayersControl.Overlay checked name="OpenStreetMap">
             <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-        </LayerGroup>
-        </LayersControl.Overlay>
+          </LayersControl.Overlay>
 
-       <LayersControl.Overlay checked name="Google Maps">
-        <LayerGroup>
-            {/* Camada base Google Satellite */}
+          {/* Camada base: Google Satellite */}
+          <LayersControl.Overlay name="Google Satellite">
             <TileLayer
-                url="http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
-                attribution='&copy; <a href="https://www.google.com/maps">Google Maps</a>'
+              url="http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+              attribution='&copy; <a href="https://www.google.com/maps">Google Satellite</a>'
             />
-        </LayerGroup>
-        </LayersControl.Overlay>
-    </LayersControl>
-  
+          </LayersControl.Overlay>
 
+          {/* Camadas WMS da ANP */}
+          <LayersControl.Overlay name="POLIGONO_PRESAL_PLSIRGAS">
+            <WmsLayer
+              url="https://gishub.anp.gov.br/geoserver/wms"
+              layerName="BD_ANP:POLIGONO_PRESAL_PLSIRGAS"
+            />
+          </LayersControl.Overlay>
 
-      {/* Camadas WMS */}
-      <WmsLayer
-        url="http://localhost:8080/geoserver/wms"
-        layerName="projectSenai:Limites_Estaduais"
-      />
+          <LayersControl.Overlay name="POCOS_SIRGAS">
+            <WmsLayer
+              url="https://gishub.anp.gov.br/geoserver/wms"
+              layerName="BD_ANP:POCOS_SIRGAS"
+            />
+          </LayersControl.Overlay>
 
-        <WmsLayer
-        url="http://localhost:8080/geoserver/wms"
-        layerName="projectSenai:POCOS_SIRGAS"
-      />
-
-    </MapContainer>
+          <LayersControl.Overlay name="Limites Estaduais">
+            <WmsLayer
+              url="https://gishub.anp.gov.br/geoserver/wms"
+              layerName="Basemap:Limites_Estaduais"
+            />
+          </LayersControl.Overlay>
+        </LayersControl>
+      </MapContainer>
     </>
   );
 };
-
 
 export default MapWithWmsLayer;
