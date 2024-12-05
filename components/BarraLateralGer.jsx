@@ -1,40 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BarraLateralGer.css';
 import { RiUserSearchFill } from 'react-icons/ri';
+import ModalConfirmacao from './Confirmacao';
 
 export default function BarraLateralGer({
   usuarios,
   selecionados,
   setTermoBusca,
   setUsuarios,
+  setSelecionados,
 }) {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEditar = () => {
     if (selecionados.length === 1) {
-      let usuario = usuarios.filter((usuario) =>
-        selecionados.includes(usuario.nome),
+      const usuarioParaEditar = usuarios.find((usuario) =>
+        selecionados.includes(usuario.id) // Use id como critério
       );
-
-      navigate('/CadastroUsuario', { state: { usuario: usuario[0] } });
-      return;
+      navigate('/CadastroUsuario', { state: { usuario: usuarioParaEditar } });
+    } else if (selecionados.length === 0) {
+      alert('Por favor, selecione um usuário para editar.');
+    } else {
+      alert('Por favor, selecione apenas um usuário para editar.');
     }
   };
 
   const handleRemover = () => {
-    if (selecionados.length === 0) {
-      alert('Por favor, selecione pelo menos um usuário para remover.');
-      return;
-    }
+    setIsModalOpen(true);
+  };
 
+  const handleConfirmRemover = () => {
     const novosUsuarios = usuarios.filter(
-      (usuario) => !selecionados.includes(usuario.nome),
+      (usuario) => !selecionados.includes(usuario.id) // Use id como critério
     );
 
     localStorage.setItem('dadosUsuario', JSON.stringify(novosUsuarios));
 
     setUsuarios(novosUsuarios);
+    setSelecionados([]);
+    setIsModalOpen(false);
   };
 
   return (
@@ -51,9 +57,14 @@ export default function BarraLateralGer({
       </div>
       <div className="botoesBarraLat">
         <button onClick={() => navigate('/CadastroUsuario')}>Cadastrar</button>
-        <button onClick={() => navigate('/CadastroUsuario')}>Editar</button>
+        <button onClick={handleEditar}>Editar</button>
         <button onClick={handleRemover}>Remover</button>
       </div>
+      <ModalConfirmacao
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmRemover}
+      />
     </div>
   );
 }

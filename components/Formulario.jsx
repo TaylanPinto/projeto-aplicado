@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Importa o hook para redirecionamento
+import { useNavigate } from "react-router-dom"; 
 import "./Formulario.css";
 
-const Formulario = ({usuario, onSubmit}) => {
+const Formulario = ({ usuario, onSubmit }) => {
   const [novoUsuario, setNovoUsuario] = useState({
     nome: "",
     email: "",
@@ -19,52 +19,49 @@ const Formulario = ({usuario, onSubmit}) => {
     complemento: "",
     cep: "",
   });
-  const [edicao, setEdicao] = useState(false)
+  const [edicao, setEdicao] = useState(false);
 
   useEffect(() => {
     if (usuario) {
-      setEdicao(true)
-      setNovoUsuario((prev) => ({
-        ...prev,
-        ...usuario,
-      }));
+      setEdicao(true);
+      setNovoUsuario(usuario); 
     }
   }, [usuario]);
+  
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleChange = (field, value) => {
     setNovoUsuario((prev) => ({ ...prev, [field]: value }));
   };
 
   const salvarNoLocalStorage = (chave, novoUsuario, edicao) => {
-    let dadosExistentes = localStorage.getItem(chave);
-    
-    if (dadosExistentes) {
-      dadosExistentes = JSON.parse(dadosExistentes);
+    let dadosExistentes = JSON.parse(localStorage.getItem(chave)) || [];
   
-      if (edicao) {
-        dadosExistentes = dadosExistentes.map((usuario) => 
-          usuario.id === novoUsuario.id ? novoUsuario : usuario
-        );
-      } else {
-        dadosExistentes.push(novoUsuario);
-      }
+    if (edicao) {
+      dadosExistentes = dadosExistentes.map((usuario) =>
+        usuario.id === novoUsuario.id ? novoUsuario : usuario
+      );
     } else {
-      dadosExistentes = [novoUsuario];
+      novoUsuario.id = Date.now();  
+      dadosExistentes.push(novoUsuario);
     }
   
     localStorage.setItem(chave, JSON.stringify(dadosExistentes));
   };
+  
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     salvarNoLocalStorage("dadosUsuario", novoUsuario, edicao);
-    navigate("/gerenciamentoDeUsuario"); // Redireciona para Gerenciamento de Usuários
+    navigate("/gerenciamentoDeUsuario");
   };
+  
 
   const handleCancelar = () => {
-    navigate("/gerenciamentoDeUsuario"); // Redireciona ao clicar em Cancelar
+    navigate("/gerenciamentoDeUsuario");
   };
 
   return (
@@ -85,22 +82,6 @@ const Formulario = ({usuario, onSubmit}) => {
             type="email"
             value={novoUsuario.email}
             onChange={(e) => handleChange("email", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>E-mail Secundário</label>
-          <input
-            type="email"
-            value={novoUsuario.emailSecundario}
-            onChange={(e) => handleChange("emailSecundario", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Login</label>
-          <input
-            type="text"
-            value={novoUsuario.login}
-            onChange={(e) => handleChange("login", e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -129,22 +110,6 @@ const Formulario = ({usuario, onSubmit}) => {
           />
         </div>
         <div className="form-group">
-          <label>Telefone 1</label>
-          <input
-            type="tel"
-            value={novoUsuario.telefone1}
-            onChange={(e) => handleChange("telefone1", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Telefone 2</label>
-          <input
-            type="tel"
-            value={novoUsuario.telefone2}
-            onChange={(e) => handleChange("telefone2", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
           <label>Sexo</label>
           <select
             value={novoUsuario.sexo}
@@ -156,42 +121,17 @@ const Formulario = ({usuario, onSubmit}) => {
             <option value="Outro">Outro</option>
           </select>
         </div>
-        <h2>Endereços do Usuário</h2>
-        <div className="form-group">
-          <label>Endereço</label>
-          <input
-            type="text"
-            value={novoUsuario.endereco}
-            onChange={(e) => handleChange("endereco", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Número</label>
-          <input
-            type="text"
-            value={novoUsuario.numero}
-            onChange={(e) => handleChange("numero", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Complemento</label>
-          <input
-            type="text"
-            value={novoUsuario.complemento}
-            onChange={(e) => handleChange("complemento", e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>CEP</label>
-          <input
-            type="text"
-            value={novoUsuario.cep}
-            onChange={(e) => handleChange("cep", e.target.value)}
-          />
-        </div>
         <div className="button-group">
-          <button type="submit" className="btn salvar">Salvar</button>
-          <button type="button" className="btn cancelar" onClick={handleCancelar}>Cancelar</button>
+          <button type="submit" className="btn salvar">
+            Salvar
+          </button>
+          <button
+            type="button"
+            className="btn cancelar"
+            onClick={handleCancelar}
+          >
+            Cancelar
+          </button>
         </div>
       </form>
     </div>

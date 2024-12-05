@@ -5,7 +5,7 @@
   padding: 10px;
   background-color: #82785A;
   position: relative; 
-  z-index: 10; 
+  z-index: 1000;
 }
 
 .dropdown {

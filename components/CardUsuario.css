@@ -1,0 +1,77 @@
+.card-container {
+    display: flex;
+    justify-content: center;  
+    align-items: center; 
+    min-height: calc(100vh - 250px); 
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto; 
+  }
+  
+  .cardUsuario {
+    width: 90%; 
+    max-width: 1200px;  
+    min-width: 800px;   
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    table-layout: fixed;  
+  }
+  
+  .cardUsuario thead {
+    color: white;  
+  }
+  
+  .cardUsuario th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .cardUsuario th:first-child,
+  .cardUsuario td:first-child {
+    width: 50px; 
+    text-align: center; 
+  }
+  
+  .cardUsuario tbody tr:nth-child(odd) {
+    background-color: #f5f5f5;  
+  }
+  
+  .cardUsuario tbody tr:hover {
+    background-color: #eaeaea;  
+  }
+  
+  .cardUsuario td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word; 
+  }
+  
+  .cardUsuario input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.2);  
+  }
+  
+  
+  .cardUsuario {
+    overflow: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .cardUsuario {
+      font-size: 14px;
+      min-width: 600px;  
+    }
+  
+    .cardUsuario th,
+    .cardUsuario td {
+      padding: 10px;
+    }
+  }
+  
