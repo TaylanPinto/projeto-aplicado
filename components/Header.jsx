@@ -1,5 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserGear, FaMap, FaLayerGroup } from 'react-icons/fa6';
+import { FaUserGear,FaCircleInfo } from 'react-icons/fa6';
 import './Header.css';
 import DropDown from './DropDown';
 
@@ -15,9 +16,11 @@ function Header() {
             <FaUserGear />
           </span>
         </Link>
+        <Link to="/About">
         <span className="icon2">
-          <FaMap />
+        <FaCircleInfo />
         </span>
+        </Link>
       </div>
     </div>
   );

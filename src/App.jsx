@@ -9,7 +9,9 @@ import PaginaInicial from '../pages/PaginaInicial';
 import GerenciamentoDeUsuario from '../pages/GerenciamentoDeUsuario';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import CadastroUsuario from '../pages/CadastroUsuario'
+import CadastroUsuario from '../pages/CadastroUsuario';
+import About from '../pages/About.jsx'; // Importe o componente About
+import '../pages/About.jsx'
 import '../pages/GerenciamentoDeUsuario.css';
 import '../src/App.css';
 
@@ -27,8 +29,8 @@ function Layout() {
           path="/gerenciamentoDeUsuario"
           element={<GerenciamentoDeUsuario />}
         />
-        <Route path="/login" element={<Login />} />
         <Route path="/CadastroUsuario" element={<CadastroUsuario />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       {!isLogin && <Footer />}
     </>
@@ -42,4 +44,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
